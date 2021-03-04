@@ -1,0 +1,56 @@
+<html>
+{% load static %}
+{% load crispy_forms_tags %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add item</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style >
+            .form-control{
+
+            }
+            label{
+                margin-top: 30px;
+                font-size: 20px;
+                color: grey;
+            }
+        </style>
+    </head>
+    <body>
+<h1>User : {{ user }}</h1>
+        <div class="container mt-5">
+            <!-- top -->
+
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            <div class="container">
+               <form method="POST" >
+
+
+    {% csrf_token %}
+ <div class="form-group">
+
+                   <label >Item name</label>
+    <input class="form-control form-control-lg" type="text" placeholder="Item name" name="item_name" id="example1">
+ <label >Item quantity</label>
+     <input class="form-control form-control-lg" type="text" placeholder="Item quantity" name="item_quantity">
+     <label >Item status</label>
+     <select class="form-control form-control-lg" name="item_status">
+
+                        <option value="Pending"> Pending</option>
+                        <option value="Bought"> Bought</option>
+                        <option value="Not Available"> Not Available</option>
+                    </select>
+     <label >Date</label>
+                    <input class="form-control form-control-lg" type="date" placeholder="Date" name="date">
+
+                    <input style="display: none" class="form-control form-control-lg" type="text" placeholder="Item name" name="person" value="{{ user.id }}" readonly>
+ </div>
+    <button type="submit" class="btn btn-primary mb-2">Add item</button>
+</form>
+            </div>
+
+    </body>
+</html>

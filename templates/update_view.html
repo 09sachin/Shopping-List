@@ -1,0 +1,38 @@
+<html>
+{% load static %}
+{% load crispy_forms_tags %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add item</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style >
+            .form-control{
+                margin: 20px;
+            }
+            #div_id_person{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+<h1>User : {{ user }}</h1>
+        <div class="container mt-5">
+            <!-- top -->
+
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            <div class="container">
+               <form method="POST" >
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+  {{ form|crispy }}
+    <button type="submit" class="btn btn-primary mb-2">Update item</button>
+</form>
+            </div>
+
+    </body>
+</html>

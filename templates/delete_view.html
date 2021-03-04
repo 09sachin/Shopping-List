@@ -1,0 +1,25 @@
+<html>
+{% load static %}
+{% load crispy_forms_tags %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div class="container" style="margin: 100px auto">
+    <h1 style="text-align: center"> Delete this item !!!</h1>
+	<form method="POST">
+		<!-- Security token by Django -->
+		{% csrf_token %}
+		Do you really want to delete this item ?
+		<input class="btn btn-primary mb-2" type="submit" value="Yes" />
+		<a href="/">Cancel </a>
+	</form>
+</div>
+
+</body>
+</html>

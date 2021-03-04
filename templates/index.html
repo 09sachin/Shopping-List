@@ -1,0 +1,63 @@
+<html>
+{% load static %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>View List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+
+<h3 >User : {{ user }}</h3>
+<a   href="/accounts/logout"><h6>Logout</h6></a>
+        <div class="container mt-5">
+            <!-- top -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>View Grocery List</h1>
+                    <h1><a href="/add_items">Add items</a> </h1>
+
+                </div>
+                <div class="col-lg-6 float-right">
+                    <div class="row">
+                        <form style="display: flex;width: 100%" method="post">
+                        <div class="col-lg-8">
+                            <!-- Date Filtering-->
+
+                                {% csrf_token %}
+                            <input type="date" class="form-control" name="date">
+
+
+                        </div>
+
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-danger" > Filter</button>
+                        </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            <div class="row mt-4" >
+                <!--- -->
+                <!-- Loop This -->
+                {% for data in dataset %}
+                <div class="col-lg-4" style="margin-bottom: 50px">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ data.item_name}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{ data.item_quantity}} Pcs.</h6>
+                          <p class="text-success">{{ data.item_status}}</p>
+                            <a href="{{ data.id }}/update">Update</a><br>
+                            <a href="{{ data.id }}/delete">Delete</a>
+                        </div>
+                      </div>
+                </div>
+                <!-- // Loop -->
+                {% endfor %}
+
+            </div>
+        </div>
+    </body>
+</html>
