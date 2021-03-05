@@ -6,13 +6,11 @@
         <title>Add item</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <style >
-            .form-control{
-                margin: 20px;
-            }
-            #div_id_person{
-                display: none;
-            }
+
         </style>
     </head>
     <body>
@@ -33,6 +31,12 @@
     <button type="submit" class="btn btn-primary mb-2">Update item</button>
 </form>
             </div>
-
+<script>
+    $(document).ready(function() {
+      $( function() {
+    $( "#id_date" ).datepicker();
+  } );
+});
+</script>
     </body>
 </html>

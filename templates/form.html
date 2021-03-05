@@ -6,6 +6,9 @@
         <title>Add item</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <style >
             .form-control{
 
@@ -30,27 +33,34 @@
 
 
     {% csrf_token %}
- <div class="form-group">
-
-                   <label >Item name</label>
-    <input class="form-control form-control-lg" type="text" placeholder="Item name" name="item_name" id="example1">
- <label >Item quantity</label>
-     <input class="form-control form-control-lg" type="text" placeholder="Item quantity" name="item_quantity">
-     <label >Item status</label>
-     <select class="form-control form-control-lg" name="item_status">
-
-                        <option value="Pending"> Pending</option>
-                        <option value="Bought"> Bought</option>
-                        <option value="Not Available"> Not Available</option>
-                    </select>
-     <label >Date</label>
-                    <input class="form-control form-control-lg" type="date" placeholder="Date" name="date">
-
-                    <input style="display: none" class="form-control form-control-lg" type="text" placeholder="Item name" name="person" value="{{ user.id }}" readonly>
- </div>
+{# <div class="form-group">#}
+{##}
+{#                   <label >Item name</label>#}
+{#    <input class="form-control form-control-lg" type="text" placeholder="Item name" name="item_name" id="example1">#}
+{# <label >Item quantity</label>#}
+{#     <input class="form-control form-control-lg" type="text" placeholder="Item quantity" name="item_quantity">#}
+{#     <label >Item status</label>#}
+{#     <select class="form-control form-control-lg" name="item_status">#}
+{##}
+{#                        <option value="Pending"> Pending</option>#}
+{#                        <option value="Bought"> Bought</option>#}
+{#                        <option value="Not Available"> Not Available</option>#}
+{#                    </select>#}
+{#     <label >Date</label>#}
+{#                    <input class="form-control form-control-lg" type="date" placeholder="Date" name="date">#}
+{##}
+{#                    <input style="display: none" class="form-control form-control-lg" type="text" placeholder="Item name" name="person" value="{{ user.id }}" readonly>#}
+{# </div>#}
+                   {{ form|crispy }}
     <button type="submit" class="btn btn-primary mb-2">Add item</button>
 </form>
             </div>
-
+<script>
+    $(document).ready(function() {
+      $( function() {
+    $( "#id_date" ).datepicker();
+  } );
+});
+</script>
     </body>
 </html>

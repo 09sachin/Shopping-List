@@ -25,7 +25,7 @@ SECRET_KEY = 'nwia6700-%^^buryh4moj*fo$!&totq7&*t(_s)pr%n1(!6hg+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shoppinglist09.pythonanywhere.com','*']
 
 
 # Application definition

@@ -10,11 +10,16 @@ from django.shortcuts import (get_object_or_404,
 
 @login_required
 def add_item(request):
-    form = forms.Add_items(request.POST)
+    form = forms.Add_items_form(request.POST)
+    model = models.Shopping_list
     if request.method == 'POST':
         if form.is_valid():
-            form.person = request.user
-            form.save()
+            name = form.cleaned_data['name']
+            quantity = form.cleaned_data['quantity']
+            status = form.cleaned_data['status']
+            date_f = form.cleaned_data['date']
+            p = model(item_name=name,item_quantity=quantity,item_status=status,date=date_f,person=request.user)
+            p.save()
             return HttpResponseRedirect("/")
         else:
             print('invalid')
@@ -43,15 +48,15 @@ def update_view(request, id):
 
     context = {}
     obj = get_object_or_404(models.Shopping_list, id=id)
-    form = forms.Add_items(request.POST or None, instance=obj)
+    print(type(obj))
+    form = forms.Update_items(request.POST or None, instance=obj)
     if (obj.person!=request.user):
         return HttpResponse('You are not authorised')
 
     if form.is_valid():
         form.save()
         return HttpResponseRedirect("/")
-    else:
-        print('vo')
+
     context= {"form":form,"obj":obj}
     return render(request, "update_view.html", context)
 
