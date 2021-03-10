@@ -9,3 +9,21 @@ h1, h2, h3, h4, h5 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
+
+.header{
+    padding: 20px 0 15px 0;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header>a{
+    display: inline-block;
+    float: right;
+}
+
+.header>h2{
+    display: inline;
+}

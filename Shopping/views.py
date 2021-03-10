@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
 from . import forms, models
 from django.shortcuts import (get_object_or_404,
                               render,
@@ -23,13 +22,14 @@ def add_item(request):
             return HttpResponseRedirect("/")
         else:
             print('invalid')
-    return render(request,'form.html',{'form':form})
+    return render(request, 'add_item.html', {'form':form})
 
 
 @login_required
 def list_view(request):
-    context = {}
-    dataset = models.Shopping_list.objects.all().filter(person=request.user)
+    dataset = models.Shopping_list.objects.all().filter(person=request.user).order_by('date')
+    dataset = dataset.reverse()
+
     form = forms.DateFilter(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -39,12 +39,11 @@ def list_view(request):
         else:
             print('invalid')
     context = {"dataset":dataset,'form':form}
-
     return render(request, "index.html", context)
 
 
 @login_required
-def update_view(request, id):
+def update_view(request,person,item_name,id):
 
     context = {}
     obj = get_object_or_404(models.Shopping_list, id=id)
@@ -58,11 +57,11 @@ def update_view(request, id):
         return HttpResponseRedirect("/")
 
     context= {"form":form,"obj":obj}
-    return render(request, "update_view.html", context)
+    return render(request, "update_item.html", context)
 
 
 @login_required
-def delete_view(request, id):
+def delete_view(request,person,item_name,id):
     context = {}
     obj = get_object_or_404(models.Shopping_list, id=id)
 

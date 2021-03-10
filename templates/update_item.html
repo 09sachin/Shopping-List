@@ -37,7 +37,11 @@
 <script>
     $(document).ready(function() {
       $( function() {
-    $( "#id_date" ).datepicker();
+    $( "#id_date" ).datepicker(
+        {
+ maxDate:'0'
+}
+    );
   } );
 });
 </script>

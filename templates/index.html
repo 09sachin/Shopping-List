@@ -10,15 +10,16 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
-
-<h3 >User : {{ user }}</h3>
-<a   href="/accounts/logout"><h6>Logout</h6></a>
+<div class="container header">
+<h2 >User : {{ user }}</h2>
+<a href="/accounts/logout"><h6>Logout</h6></a>
+</div>
         <div class="container mt-5">
             <!-- top -->
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>View Grocery List</h1>
-                    <h1><a href="/add_items">Add items</a> </h1>
+                    <h1>Grocery List</h1>
+                    <p style="font-size: 22px"><a href="/add_items">Add items</a> </p>
 
                 </div>
                 <div class="col-lg-6 float-right">
@@ -52,8 +53,9 @@
                           <h5 class="card-title">{{ data.item_name}}</h5>
                           <h6 class="card-subtitle mb-2 text-muted">{{ data.item_quantity}} Pcs.</h6>
                           <p class="text-success">{{ data.item_status}}</p>
-                            <a href="{{ data.id }}/update">Update</a><br>
-                            <a href="{{ data.id }}/delete">Delete</a>
+                            <a href="{% url 'update'  data.person data.item_name data.id %}">Update</a><br>
+                            <a href="{% url 'delete'  data.person data.item_name data.id %}">Delete</a>
+                            <h6 style="padding-top: 25px" class="card-subtitle mb-2 text-muted">Added on {{ data.date}} </h6>
                         </div>
                       </div>
                 </div>
